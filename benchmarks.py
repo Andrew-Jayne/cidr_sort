@@ -83,6 +83,8 @@ print(f"Time taken for basic sort function: {end_time - start_time} seconds" )
 print (f"proccessed {len(my_bigass_cidr_list)} addresses 1000 times")
 
 
+my_bad_list = ["192.168.0.1", "192.168.0.0/16", "1:15:26", "192.69420.0.12/64"]
+print(sort_list(my_bad_list))
 
 
 print(f"my unsorted list is: {my_cidr_list}")
