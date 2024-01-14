@@ -19,29 +19,25 @@ class SortableCIDRObject():
     @staticmethod
     def _make_sortable(cidr_string:str):
         octet_list = []
+
         #prune /XX if it exists
         if "/" in cidr_string:
             strip_list = re.split(r'[/]', cidr_string)
             cidr_string = strip_list[0]
+
         #Slice string to list based on IP/CIDR notation chars
         listified_string = re.split(r'[.]', cidr_string)
-        # pad sub-string from the left to be 3 chars
-        for raw_octet in listified_string:
-            octet = list(raw_octet)
-            match len(octet):
-                case 1:
-                    octet.insert(0, "0")
-                    octet.insert(0, "0")
-                case 2:
-                    octet.insert(0, "0")
-                case 3:
-                    pass
-                case _:
-                    print(f"Warning: Invalid Octect: {octet}, will be set to fff")
-                    octet = ["f","f","f"]
-            octet_list.append("".join(octet))
-        # concatenate the 4 sets of digits into a single string
 
+        # pad sub-string from the left to be 3 chars
+        for octet in listified_string:
+            if len(octet) <= 3:
+                octet.zfill(3)
+            else:
+                print(f"Warning: Invalid Octect: {octet}, will be set to fff")
+                octet = "fff"
+            octet_list.append("".join(octet))
+
+        # concatenate the 4 sets of digits into a single string
         return str("-".join(octet_list))
 
 
