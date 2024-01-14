@@ -8,7 +8,7 @@ Time comparrision for 1k runs on a set of 309 address
 
 
 ```
-Time taken for fancy sort function : 0.8183498382568359 seconds 
+Time taken for fancy sort function : 0.733680009841919 seconds 
 proccessed 309 addresses 1000 times
 Time taken for basic sort function: 0.03343319892883301 seconds
 proccessed 309 addresses 1000 times
